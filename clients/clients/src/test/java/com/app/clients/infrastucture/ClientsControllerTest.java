@@ -1,7 +1,6 @@
 package com.app.clients.infrastucture;
 
 import com.app.clients.application.usecases.ClientsUseCase;
-import com.app.clients.domain.entities.ClientDTO;
 import com.app.clients.domain.entities.Clients;
 import com.app.clients.infrastructure.controllers.ClientsController;
 import org.junit.jupiter.api.Test;
@@ -9,13 +8,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.stubbing.OngoingStubbing;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import java.time.LocalDate;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
