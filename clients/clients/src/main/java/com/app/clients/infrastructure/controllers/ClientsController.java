@@ -92,4 +92,24 @@ public class ClientsController {
     }
 
 
+    @PostMapping("/advancedFilter")
+    @ApiResponses(value = {
+            @ApiResponse(code = Constants.CODE_200, message = Constants.MESSAGE_200, response = ResponseMessage.class),
+            @ApiResponse(code = Constants.CODE_400, message = Constants.MESSAGE_400, response = ResponseErrorMessage.class),
+            @ApiResponse(code = Constants.CODE_422, message = Constants.MESSAGE_422, response = ResponseErrorMessage.class),
+            @ApiResponse(code = Constants.CODE_500, message = Constants.MESSAGE_500, response = ResponseErrorMessage.class) })
+    public ResponseEntity<Object> advancedFilter(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "50") int size,
+            @RequestBody ClientDTO client) {
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(clientsUseCase.advancedFilter(client,page,size));
+        }  catch (Exception e) {
+            ResponseErrorMessage errorMessage = new ResponseErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error interno del servidor");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(errorMessage);
+        }
+
+    }
+
 }
